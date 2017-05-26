@@ -1,0 +1,20 @@
+{"name":"bubble", "children": [
+{"name":"Age","description":"Age groups",
+"children":[
+    {"name": "Distribution","address":"Age.png", "note":"Age group"},
+    {"name": "Destination","address":"/stackedgraph.html","note":""},
+    {"name": "Groups","address":"Age.png"}
+]},
+{"name": "Bookings", "description": "Time of bookings",
+"children":[
+    {"name":"Weekly","address":"Bookings_weekly.png","note":"Prototype Infographics on Excess Fertilizer Nutrients"},
+    {"name":"Monthly","address":"Booking_monthly.png", "note":"The gap between attainable yields and actual yields, with modeled yields assuming the percentage of gap closed."},
+    {"name":"Yearly","address":"Growth.png"}
+]},
+{"name":"Misc", "description":"Misc",
+"children":[
+    {"name":"Activity","address":"Platform_Activity.png"},
+    {"name":"Gender","address":"Gender.png"},
+    {"name":"Map","address":"/heatmap.html"}
+]}
+]}

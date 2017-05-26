@@ -1,0 +1,26 @@
+{"name":"bubble", "children": [
+{"name":"Age","description":"Age groups",
+"children":[
+    {"name": "18-25","address":"http://gli.environment.umn.edu", "note":"Global crop geography, including precipitation, temperature, crop area, etc."},
+    {"name": "25-40","address":"http://d3js.org"},
+    {"name": "> 40","address":"http://environment.umn.edu", "note":"Maize, wheat, rice, and soybean yields in 2000"}
+]},
+{"name": "Time", "description": "Time of bookings",
+"children":[
+    {"name":"Month","address":"http://d3js.org","note":"Prototype Infographics on Excess Fertilizer Nutrients"},
+    {"name":"Year","address":"http://d3js.org", "note":"The gap between attainable yields and actual yields, with modeled yields assuming the percentage of gap closed."},
+    {"name":"Time on platform","address":"http://sunsp.net"}
+]},
+{"name":"Metrics", "description":"Profiles of Country",
+"children":[
+    {"name":"Number of searches","address":"http://d3js.org"},
+    {"name":"Time spent on platform","address":"http://d3js.org"},
+    {"name":"Gender","address":"http://d3js.org"}
+]},
+{"name":"Data", "description":"Crop Data in 5 minutes grid",
+"children":[
+    {"name":"Geography","address":"http://www.earthstat.org/"},
+    {"name":"Crop Land","address":"http://www.earthstat.org/"},
+    {"name":"Crop Yields","address":"http://www.earthstat.org/"}
+]}
+]}

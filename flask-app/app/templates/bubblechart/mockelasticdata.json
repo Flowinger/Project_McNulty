@@ -1,0 +1,89 @@
+{
+   "took": 492,
+   "timed_out": false,
+   "_shards": {
+      "total": 5,
+      "successful": 3,
+      "failed": 0
+   },
+   "hits": {
+      "total": 30111166,
+      "max_score": 0,
+      "hits": []
+   },
+   "aggregations": {
+      "world_map": {
+         "doc_count_error_upper_bound": 0,
+         "sum_other_doc_count": 0,
+         "buckets": [
+            {
+               "key": "USA",
+               "doc_count": 62376
+            },
+            {
+               "key": "CAN",
+               "doc_count": 1428
+            },
+            {
+               "key": "GBR",
+               "doc_count": 2324
+            },
+            {
+               "key": "FRA",
+               "doc_count": 5023
+            },
+            {
+               "key": "NLD",
+               "doc_count": 762
+            },
+            {
+               "key": "AUS",
+               "doc_count": 539
+            },
+            {
+               "key": "SWE",
+               "doc_count": 502
+            },
+            {
+               "key": "ARG",
+               "doc_count": 2359
+            },
+            {
+               "key": "RUS",
+               "doc_count": 4213
+            },
+            {
+               "key": "ESP",
+               "doc_count": 2249
+            },
+            {
+               "key": "DEU",
+               "doc_count": 1061
+            },
+            {
+               "key": "MEX",
+               "doc_count": 1023
+            },
+
+            {
+               "key": "CHN",
+               "doc_count": 3478
+            },
+            {
+               "key": "CHL",
+               "doc_count": 3450
+            },
+
+            {
+               "key": "ITA",
+               "doc_count": 2835
+            },
+            {
+               "key": "PRT",
+               "doc_count": 217
+            }
+
+         ]
+      }
+   }
+}

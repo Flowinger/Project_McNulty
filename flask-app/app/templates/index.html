@@ -1,0 +1,201 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+  <section class="header">
+    <h2 class="title">AirBnB User - Travel Destination</h2>
+  </section>
+  <hr />
+    <style type="text/css">
+    #mainBubble {
+      background: #fff;
+      border: solid 1px #ddd;
+      box-shadow: 0 0 4px rgba(0,0,0,0);
+      font: 10px sans-serif;
+      height: 800px;
+      position: relative;
+      width: 80%;
+    }
+             
+    #mainBubble svg {
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+                         
+    #mainBubble circle.topBubble {
+      fill: #aaa;
+      stroke: #666;
+      stroke-width: 1.5px;
+     }
+
+    .panel-collapse-clickable {
+      cursor: pointer;  
+    }
+    img {
+      padding: 0px 0px 20px;
+      margin-left:150px;
+    }
+/*    .header {
+      text-align: center;
+    }*/
+
+    /*div#fields.container {
+      display: block;
+      margin: auto;w
+      width: 90%;
+      align-content: center;
+    }*/
+    div#field1 {
+      
+      padding-right: 50px;
+      
+    }
+
+
+    </style>
+    <script type="text/javascript" src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"> -->
+    
+    
+    <!-- <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script> -->
+    <!-- <script src="{{url_for('static', filename='js/senddata.js')}}"></script> -->
+    
+    <!-- <script src="//app/static/js/my_Function.js"></script> -->
+    <script>
+      function myFunction () {
+        //var day = $('#day').val();
+        //var month = $('#month').val();
+        var age = $('#age').val();
+        var number_of_searches = $('#number_of_searches').val();
+        var gender = $('#gender').val();
+        var signup = $('#signup').val();
+        var date = $(".dtpick")[0].value;
+        console.log(date);
+      $.ajax({
+       type: "POST",
+       //contentType: "application/json; charset=utf-8",
+       url: "/",
+       dataType: "json",
+       async: true,
+       //data: '{"day": "'+day+'", "month": "'+month+'", "age": "'+age+'", "number_of_searches": "'+number_of_searches+'", "gender": "'+gender+'", "signup": "'+signup+'"}'
+       data: {
+        "age": age,
+        "number_of_searches": number_of_searches,
+        "gender": gender,
+        "signup": signup,
+        "date": date
+       },
+
+       success: function (data) {
+        console.log(data);
+       //   var chance = 100 * data["score"];
+       //   d3.select("#chancebar")
+       //     .attr("width", chance_scale(chance));
+       //   d3.select("#percent_text")
+       //     .attr("x", chance_scale(chance-5))
+       //     .text(chance.toFixed(1) + "%");
+        },
+        error: function (result) {
+          console.log(result);
+       }
+      })
+      } 
+
+      $(function() {
+            $( ".dtpick" ).datepicker();
+      });
+    </script>
+  <div class="content">
+      
+      
+    <form method="POST" action="/">
+      {{ form.hidden_tag() }}
+      {{ form.csrf_token }}
+
+      <div class="container" id="fields" width=600>
+        <div class="threecolumns" id="field1">
+          {{ form.age.label }} {{ form.age() }}
+        </div>
+        <br>
+        <div class="threecolumns" id="field2">
+          {{ form.number_of_searches.label }} {{ form.number_of_searches() }}
+        </div>
+        <br>
+        <div class="threecolumns" id="field3">
+          {{ form.gender.label }} {{ form.gender() }}
+        </div>
+        <br>
+        <div class="threecolumns" id="field4">
+            {{ form.signup.label }} {{ form.signup() }}
+        </div>
+        <br>
+        <div class="threecolumns" id="field5">
+              {{ form.dt(class="dtpick") }}
+         </div>
+         <br>
+         <button type="submit" class="button-primary" onclick="myFunction()">Submit</button>
+      </div>
+
+      <br>
+      
+    </form>
+    {% if prediction %}
+      <div class="row">
+          <div class="six columns">
+              <p>User's next travel destination will most likely be:</p>
+              <img src="{{url_for('static', filename='images/' + prediction + '.gif')}}"
+              height="200"
+          />
+          </div>
+          <div class="six columns">
+              <!--  Your Chart or any other form of visualizations -->
+              <div id="chart"></div>
+          </div>
+      </div>
+    {% endif %}
+
+    <div class="row">
+      <div class="container">
+          <ul class="nav nav-tabs nav-justified">
+              <li class="nav-item active"><a href="#home" class="nav-link active" aria-controls="home" role="tab" data-toggle="tab">Overview Bubbles</a></li>
+              <li class="nav-item"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Map</a></li>
+              <li class="nav-item"><a href="#messages" class="nav-link" aria-controls="messages" role="tab" data-toggle="tab">Model</a></li>
+              <li class="nav-item"><a href="#settings" class="nav-link" aria-controls="settings" role="tab" data-toggle="tab">Graphs</a></li>
+          </ul>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade in active" id="home">
+              <a href="http://0.0.0.0:8000/bubbles.html">Overview</a>
+              
+              <!-- <img class="media-object img responsive" src="/bubblechart/Platform_Activity.png" alt="Age"/> -->
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="profile">
+              <a href="http://0.0.0.0:8000/heatmap.html">Map</a>  
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane fade" id="settings">
+              <img src="http://0.0.0.0:8000/Age.png"/>
+              <img src="http://0.0.0.0:8000/Gender.png"/>
+              <img src="http://0.0.0.0:8000/Bookings_weekly.png"/>
+              <img src="http://0.0.0.0:8000/Booking_monthly.png"/>
+              <img src="http://0.0.0.0:8000/Growth.png"/>
+
+            </div>
+
+          </div>
+      </div>
+    </div>
+
+    
+
+  
+{% endblock body %}
+
+{% block js %}
+  <script type="text/javascript">
+      
+  </script>
+{% endblock js %}
